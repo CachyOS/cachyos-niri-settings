@@ -166,7 +166,6 @@ binds {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-at-startup
 
     spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1" "&" // Polkit
-    spawn-at-startup "xwayland-satellite" // XWayland support
     spawn-at-startup "swww-daemon" // Wallpaper daemon
     spawn-at-startup "swww img" "/usr/share/wallpapers/cachyos-wallpapers/Skyscraper.png" // Set wallpaper
     spawn-at-startup "waybar" // Launch waybar
