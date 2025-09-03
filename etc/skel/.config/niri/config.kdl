@@ -38,25 +38,25 @@ binds {
     MOD+SHIFT+ESCAPE                     { show-hotkey-overlay; }
 
     // ─── Applications ───
-    MOD+RETURN                          hotkey-overlay-title="Open Terminal: alacritty" { spawn "alacritty"; }
-    MOD+SPACE                           hotkey-overlay-title="Open App Launcher: wofi" { spawn "wofi"; }
-    MOD+B                               hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
-    MOD+ALT+L                           hotkey-overlay-title="Lock Screen: swaylock" { spawn "swaylock"; }
+    MOD+RETURN                          hotkey-overlay-title="Open Terminal: alacritty" { spawn-sh "alacritty"; }
+    MOD+SPACE                           hotkey-overlay-title="Open App Launcher: wofi" { spawn-sh "wofi"; }
+    MOD+B                               hotkey-overlay-title="Open Browser: firefox" { spawn-sh "firefox"; }
+    MOD+ALT+L                           hotkey-overlay-title="Lock Screen: swaylock" { spawn-sh "swaylock"; }
     
     // Please choose your own file manager
-    MOD+E                             hotkey-overlay-title="File Manager: Nautilus" { spawn "nautilus"; }
+    MOD+E                             hotkey-overlay-title="File Manager: Nautilus" { spawn-sh "nautilus"; }
 
     // ─── Audio Controls ───
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
-    XF86AudioRaiseVolume                allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-    XF86AudioLowerVolume                allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-    XF86AudioMute                       allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-    XF86AudioMicMute                    allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-    XF86AudioNext                       allow-when-locked=true { spawn "playerctl" "next"; }
-    XF86AudioPause                      allow-when-locked=true { spawn "playerctl" "play-pause"; }
-    XF86AudioPlay                       allow-when-locked=true { spawn "playerctl" "play-pause"; }
-    XF86AudioPrev                       allow-when-locked=true { spawn "playerctl" "previous"; }
+    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
+    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    XF86AudioMute                       allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioNext                       allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioPause                      allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioPlay                       allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioPrev                       allow-when-locked=true { spawn-sh "playerctl previous"; }
 
     // ─── Window Movement and Focus ───
     MOD+Q                               { close-window; }
@@ -163,12 +163,12 @@ binds {
 }
 
 // ────────────── Startup Applications ──────────────
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-at-startup
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
 
-    spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1" "&" // Polkit
-    spawn-at-startup "swww-daemon" // Wallpaper daemon
-    spawn-at-startup "swww img" "/usr/share/wallpapers/cachyos-wallpapers/Skyscraper.png" // Set wallpaper
-    spawn-at-startup "waybar" // Launch waybar
+    spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1 &" // Polkit
+    spawn-sh-at-startup "swww-daemon" // Wallpaper daemon
+    spawn-sh-at-startup "swww img /usr/share/wallpapers/cachyos-wallpapers/Skyscraper.png" // Set wallpaper
+    spawn-sh-at-startup "waybar" // Launch waybar
 
     prefer-no-csd // Disable program decorations
     screenshot-path null // Disable screenshot saving
