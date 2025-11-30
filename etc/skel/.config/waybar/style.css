@@ -12,7 +12,7 @@ window#waybar {
 
 /* Left-most: Arch icon */
 #custom-appmenu {
-  font-size: 4;
+  font-size: 4px;
   background-image: url('/usr/share/icons/cachyos.svg');
   background-color: #1e222a;
   background-position: center;
@@ -101,6 +101,7 @@ tooltip {
 #bluetooth,
 #battery,
 #tray,
+#language,
 #custom-updates,
 #custom-notification {
     background-color: #1e222a;
